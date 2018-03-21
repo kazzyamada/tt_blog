@@ -1,0 +1,47 @@
+Laravel 5.4 + Vue 2.1 でSPAアプリケーション作成チュートリアル
+
+https://qiita.com/acro5piano/items/f33381fc60408abe9865
+
+
+追加した。
+        <meta name="csrf-token" content="{{ csrf_token() }}">
+"resources/views/app.blade.php" [Modified] 30 lines --40%--   12,1-4        Top
+
+ error  in ./resources/assets/js/components/Articles/Index.vue
+
+(Emitted value instead of an instance of Error) 
+  Error compiling template:
+  
+  <div v-for="article in articles">
+      <h1>
+          <router-link :to="'/articles/' + article.id">{{ article.title }}</router-link>
+      </h1>
+      <p>
+          {{ article.content }}
+      </p>
+  </div>
+  
+  - Cannot use v-for on stateful component root element because it renders multiple elements.
+
+
+ @ ./resources/assets/js/components/Articles/Index.vue 6:23-267
+ @ ./resources/assets/js/app.js
+ @ multi ./resources/assets/js/app.js ./resources/assets/sass/app.scss
+
+これは、もう一つ上にエレメントが必要だってこと。
+    <div id='main'>>
+    <div v-for="article in articles">
+	:
+	</div>
+	</div>
+
+
+-----
+もう一つの参考
+
+hravel + Vue.js で出席管理Webアプリを作成する – Part.3
+ttps://luftgarden.work/laravel-vue-attendance-part3/
+
+公式-これを読まないと始まらないな。
+https://jp.vuejs.org/v2/guide/
+
